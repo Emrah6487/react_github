@@ -1,14 +1,24 @@
-import React, { Component } from 'react'
-import User from './User'
-import Loading from './Loading'
+   componentDidMount(){
+    this.setState({loading:true})
 
-export class UserList extends Component {
+    setTimeout (() =>{
+      this.setState({loading:false})
+    },2000);
+    /*
+    gerçek api den aldığında setTimeout içine burayı yapıştır
+    fetch("")
+    .then(response => response.json())
+    .then(data => this.setState({user:data, loading:false}))*/
 
-/*   constructor(props) {
+  } 
+
+
+  /*   constructor(props) {
     super(props)
   
     this.state = {
-       users : [
+      loading:false,
+      users : [
         {
           "login": "mojombo",
           "id": 1,
@@ -613,21 +623,3 @@ export class UserList extends Component {
       
     }
   } */
-
-
-
-  render() {
-    if(this.props.loading){
-      return <Loading/>;
-    }
-    return (
-      <div>
-        {this.props.users.map(user =>(
-          <User user={user} key={user.id}/>
-        ))}
-      </div>
-    )
-  }
-}
-
-export default UserList
